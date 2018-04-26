@@ -9,7 +9,11 @@ export function GoogleLogin(){
     var provider = new firebase.auth.GoogleAuthProvider();
     firebase.auth().signInWithPopup(provider).then(function(result) {
         var message = "Successfully logged in. Welcome " + result.user.email;
-        console.log(message)
+        console.log(message);
+        store.dispatch({
+            type: 'UPDATE_USER',
+            user: result.user.email
+        });
     }).catch(function(error) {
       var errorCode = error.code;
       var errorMessage = error.message;
@@ -22,20 +26,15 @@ class App extends Component {
 
     // Initialize Firebase
     firebase.initializeApp(config);
+
   }
 
   render() {
     return (
       <div className="App">
         <NavBar />
-        {/*outershell for the modal created by any of the link in the nav bar*/}
-        <div className="modal fade" id="NavModal" role="dialog">
-          <div className="modal-dialog">
-            <div className="modal-content">
-                <NavBar />
-            </div>
-          </div>
-        </div>
+
+        <p>{store.getState().currentUser}</p>
 
         {/*main body of the page*/}
         <div className="container default">
