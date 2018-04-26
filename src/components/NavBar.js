@@ -1,5 +1,4 @@
 import React from 'react';
-import { store } from '../index.js';
 import { GoogleLogin } from './App.js';
 
 export class NavBar extends React.Component {

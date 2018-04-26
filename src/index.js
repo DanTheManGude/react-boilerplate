@@ -16,9 +16,27 @@ const currentUser = (state = null, action) => {
         }
 }
 
+//reducer for the banner
+const initialMessage = <div>Welcome to a boilerplate including React, Redux, Bootstrap, Firebase and these fancy Banners. <br />Click on 'Source' in the top right to checkout the code behind this.</div>
+//TODO
+
+const banners = (state = [{'message': initialMessage, 'type': 'alert-info'}], action) => {
+    switch (action.type) {
+        case 'ADD_BANNER':
+            return state.concat({'message': action.message, 'type': action.kind});
+        case 'REMOVE_BANNER':
+            var newS = state;
+            newS.splice(action.id, 1);
+            return newS;
+        default:
+            return state;
+        }
+}
+
 //main reducer
 const appState = combineReducers({
-    currentUser
+    currentUser,
+    banners
 });
 
 //redux store
@@ -34,5 +52,8 @@ const render = () => {
     );
 };
 
+//linking the store to rendering the application
+store.subscribe(render);
 render();
+
 registerServiceWorker();
