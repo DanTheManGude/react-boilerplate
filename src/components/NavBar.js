@@ -1,4 +1,6 @@
 import React from 'react';
+import { store } from '../index.js';
+import { GoogleLogin } from './App.js';
 
 export class NavBar extends React.Component {
     render() {
@@ -27,6 +29,10 @@ export class NavBar extends React.Component {
                       {/*my main homepage*/}
                       <li className="nav-item">
                         <a className="nav-link" href="https://dangude.com" target="_blank"><img src="icons/DG.png" alt="DG" height='25'/> Dan Gude</a>
+                      </li>
+                      {/*GoogleLogin*/}
+                      <li className="nav-item">
+                          <a className="nav-link" id='Login' onClick={GoogleLogin}><img src="icons/G.png" alt="Google Login" height='25em'/> Login</a>
                       </li>
                     </ul>
                   </div>
