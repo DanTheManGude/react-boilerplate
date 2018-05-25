@@ -6,18 +6,8 @@ import registerServiceWorker from './registerServiceWorker';
 import { createStore } from 'redux';
 import { combineReducers } from 'redux';
 
-//reducer current loggedin user
-const currentUser = (state = null, action) => {
-    switch (action.type) {
-        case 'UPDATE_USER':
-            return action.user;
-        default:
-            return state;
-        }
-}
-
 //reducer for the banner
-const initialMessage = <div>Welcome to a boilerplate including React, Redux, Bootstrap, Firebase and these fancy Banners. <br />Click on 'Source' in the top right to checkout the code behind this.</div>
+const initialMessage = <div>Welcome to a boilerplate including React, Redux, Bootstrap and these fancy Banners. <br />Click on 'Source' in the top right to checkout the code behind this.</div>
 //TODO
 
 const banners = (state = [{'message': initialMessage, 'type': 'alert-info'}], action) => {
@@ -35,7 +25,6 @@ const banners = (state = [{'message': initialMessage, 'type': 'alert-info'}], ac
 
 //main reducer
 const appState = combineReducers({
-    currentUser,
     banners
 });
 
